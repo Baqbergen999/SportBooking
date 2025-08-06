@@ -208,8 +208,7 @@ import sportsRoutes from "./routes/sportsRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
 import sportsDataRoutes from "./routes/addSportRoutes.js"
 import userSavedRoutes from "./routes/userSavedRoutes.js";
-import {PORT} from "./config/env.js";
-
+const PORT = 3000
 const app = express();
 
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
