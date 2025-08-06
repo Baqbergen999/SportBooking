@@ -207,10 +207,10 @@ import bcrypt from "bcrypt";
 import sportsRoutes from "./routes/sportsRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
 import sportsDataRoutes from "./routes/addSportRoutes.js"
-import userSavedRoutes from "./routes/userSavedRoutes.js"; // Тек бір рет
+import userSavedRoutes from "./routes/userSavedRoutes.js";
+import {PORT} from "./config/env.js";
 
 const app = express();
-const PORT = 3000;
 
 app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
