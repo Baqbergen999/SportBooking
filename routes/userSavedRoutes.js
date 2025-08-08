@@ -10,11 +10,11 @@ import {
 
 const router = express.Router();
 
-router.post("/save", saveSport); // POST /users/save
-router.get("/:id/saved", getSavedSports); // GET /users/saved/:id
-router.post("/unsave", unsaveSport); // POST /users/unsave
-router.post("/book-sport", bookSport); // POST /users/book
-router.get("/:userId/booked", getBookedItems); // GET /users/bookings/:userId
+router.post("/save", saveSport);
+router.get("/:id/saved", getSavedSports);
+router.post("/unsave", unsaveSport);
+router.post("/book-sport", bookSport);
+router.get("/:userId/booked", getBookedItems);
 router.post("/unbook", unBookSport);
 
 export default router;

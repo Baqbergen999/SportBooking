@@ -85,8 +85,6 @@ export const bookSport = async (req, res) => {
   }
 };
 
-
-// bookings таблицасынан user-дің броньдарын алу
 export const getBookedItems = async (req, res) => {
   const { userId } = req.params;
 

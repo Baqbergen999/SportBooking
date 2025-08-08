@@ -1,6 +1,5 @@
 import pool from "../config/db.js";
 
-// Жаңа спорт нысанын қосу
 export const addSportFacility = async (req, res) => {
   const {
     name,
@@ -12,7 +11,7 @@ export const addSportFacility = async (req, res) => {
     image,
     amenities,
     workinghours,
-    ownerId, // егер иесін сақтағың келсе
+    ownerId,
   } = req.body;
 
   try {
