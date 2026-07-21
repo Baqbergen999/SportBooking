@@ -1,22 +1,36 @@
 import express from "express";
 import cors from "cors";
+import bcrypt from "bcrypt";
+
 import authRoutes from "./routes/authRoutes.js";
 import profileRoutes from "./routes/profileRoutes.js";
 import pool from "./config/db.js";
-import bcrypt from "bcrypt";
 import sportsRoutes from "./routes/sportsRoutes.js";
 import reviewRoutes from "./routes/reviewRoutes.js";
-import sportsDataRoutes from "./routes/addSportRoutes.js"
+import sportsDataRoutes from "./routes/addSportRoutes.js";
 import userSavedRoutes from "./routes/userSavedRoutes.js";
-const PORT = 3000
+
+const PORT = 3000;
 const app = express();
 
-app.use(cors({ origin: ["http://localhost:5173",  "https://sportbookingzhattapal.netlify.app"], credentials: true }));
+// CORS баптаулары
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://sportbookingzhattapal.netlify.app",
+    ],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
+// Маршруттар (Routes)
 app.use("/reviews", reviewRoutes);
 app.use("/sportsData", sportsDataRoutes);
 app.use("/users", userSavedRoutes);
+app.use("/sports", sportsRoutes); // Ескерту: /sportsData қайталанбас үшін /sports деп өзгертілді
 
 app.use(authRoutes);
 app.use(profileRoutes);
@@ -25,9 +39,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Server is running!" });
 });
 
-app.use("/sportsData", sportsRoutes);
-
-
+// Базаны инициализациялау function
 async function initializeDatabase() {
   try {
     const client = await pool.connect();
@@ -66,7 +78,7 @@ async function initializeDatabase() {
     } else {
       console.log("✅ Users table already exists");
     }
- 
+
     client.release();
   } catch (err) {
     console.error("❌ DB Init Error:", err);

@@ -1,13 +1,31 @@
-const { Pool } = require('pg');
+// const { Pool } = require("pg");
+
+// const pool = new Pool({
+//   user: "postgres",
+//   host: "localhost",
+//   database: "sport_booking_w5jf",
+//   port: 5432,
+//   password: "Baxa_2011",
+//   connectionString:
+//     "postgresql://sport_booking:PCNZSJ7G4tBJqmqJvLU2Bg1RIsX9JyxK@dpg-d9f6a1t7vvec73fnomh0-a.oregon-postgres.render.com/sport_booking_w5jf",
+//   ssl: { rejectUnauthorized: false },
+// });
+
+// module.exports = pool;
+
+const { Pool } = require("pg");
+require("dotenv").config(); // .env файлын оқу үшін
+
+// Eгер process.env.DATABASE_URL болмаса, локальный URL-ді ала салады
+const connectionString =
+  process.env.DATABASE_URL ||
+  "postgresql://sport_booking:PCNZSJ7G4tBJqmqJvLU2Bg1RIsX9JyxK@dpg-d9f6a1t7vvec73fnomh0-a.oregon-postgres.render.com/sport_booking_w5jf";
 
 const pool = new Pool({
-  // user: 'postgres',
-  // host: 'localhost',
-  // database: 'Auth_system',
-  // password: 'Baxa_2011',
-  // port: 5432,
-  connectionString: "postgresql://bakbergen:TWwNovbyBoNsiwh0Sd7i1o0wU2q2CjLs@dpg-d29o9nc9c44c73etmhmg-a.oregon-postgres.render.com/sport_booking_33co",
-  ssl: {rejectUnauthorized: false}
+  connectionString: connectionString,
+  ssl: {
+    rejectUnauthorized: false, // Render Postgres үшін міндетті
+  },
 });
 
 module.exports = pool;
