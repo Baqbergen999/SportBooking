@@ -14,15 +14,17 @@ const PORT = 3000;
 const app = express();
 
 // CORS баптаулары
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://sportbookingzhattapal.netlify.app",
-    ],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//       "https://sportbookingzhattapal.netlify.app",
+//     ],
+//     credentials: true,
+//   })
+// );
+
+app.use(cors()); // вариант 2: барлық домендерге рұқсат береді, бірақ қауіпсіздік тұрғысынан ұсынылмайды
 
 app.use(express.json());
 
